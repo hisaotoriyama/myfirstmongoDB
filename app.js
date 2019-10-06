@@ -1,10 +1,17 @@
 const express = require("express")
 const resource = require('express-resource')
+const app = express()
 const bodyParser = require('body-parser')
 const mongodb = require('mongodb')
 const MongoClient = mongodb.MongoClient
 const assert = require('assert') 
-const app = express()
+
+
+let adduser = require('./routes/adduser')
+let login = require('./routes/login')
+app.use('/adduser',adduser)
+app.use('/login',login)
+
 
 var mdb = {}
 MongoClient.connect('mongodb://admin:password@127.0.0.1:27017/',

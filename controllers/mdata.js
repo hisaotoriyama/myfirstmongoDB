@@ -1,3 +1,4 @@
+const mongodb = require('mongodb')
 module.exports = function (mdb) {     
     return { 
         index: (req, res) => {
@@ -10,7 +11,7 @@ module.exports = function (mdb) {     
             let key = req.params.md
             console.log(req.params.md)
             mdb.db.collection('documents').find({
-                key: {$eq: key}
+               _id : mongodb.ObjectId(key)
             }).toArray((err, docs) => {
                 if (err) throw err
                 res.status(200).send(docs)
@@ -21,12 +22,12 @@ module.exports = function (mdb) {     
 
          create:  (req, res) => {
             console.log("create Start") 
-            let key = req.params.md
-            let data = {
-                "key": key,
-                data: req.body
-            }
-            mdb.db.collection('documents').insertOne(data, (err, dr) => {
+            // let key = req.params.md
+            // let data = {
+            //     "key": key,
+            //     data: req.body
+            // }
+            mdb.db.collection('documents').insertOne(req.body, (err, dr) => {
             if (err) throw err
             console.log("data inserted.")
             res.status(200).send({})
