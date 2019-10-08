@@ -1,7 +1,8 @@
 let express = require('express')
 let router = express.Router()
 // let db = require('../models/index')
-module.exports = router;
+
+
 
 // router.post('/',(req, res) => {
 //     db.user_cookies.findOne({
@@ -29,3 +30,4 @@ module.exports = router;
 // })
 
 
+module.exports = router;
