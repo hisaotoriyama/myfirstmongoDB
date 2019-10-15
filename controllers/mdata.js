@@ -42,7 +42,7 @@ module.exports = function (mdb) {     
                     res.status(200).send({})
                 })
             },
-            destroy: (req, res) => {
+            delete: (req, res) => {
                 let key = req.params.md
                 mdb.db.collection('documents').deleteMany({key:key}, (err, r) => {
                     if (err) throw err
